@@ -5,6 +5,6 @@
   for (let i = 0; i < students.length; i++) {
     const name = students[i]
     const marks = results[i]
-    console.log("|", name, "|", marks, "|")
+    console.log("|", name.padEnd(6), "|", marks.toString().padEnd(3), "|")
   }
 </script>
