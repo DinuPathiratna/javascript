@@ -7,6 +7,17 @@
         let marks = parseInt(prompt(`Enter the marks of ${name}:`));
         students.push(name); // .push adds elmnts into array. name is added to students array
         results.push(marks);
-        console.log("|", name.padEnd(6), "|", marks.toString().padEnd(3), "|");
     }
+
+    let longestNameLength = 0;
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].length > longestNameLength) {
+            longestNameLength = students[i].length;
+        }
+    }
+
+    for (let i = 0; i < numstudents; i++) {
+        console.log(students[i].padEnd(longestNameLength + 2) + "| " + results[i]);
+    }
+
 </script>
