@@ -1,0 +1,12 @@
+<script>
+    let numstudents = parseInt(prompt("Enter the number of students:"));
+    const students = [];
+    const results = [];
+    for (let i = 0; i < numstudents; i++) {
+        let name = prompt(`Enter the name of student ${i + 1}:`);
+        let marks = parseInt(prompt(`Enter the marks of ${name}:`));
+        students.push(name); // .push adds elmnts into array. name is added to students array
+        results.push(marks);
+        console.log("|", name.padEnd(6), "|", marks.toString().padEnd(3), "|");
+    }
+</script>
