@@ -1,0 +1,34 @@
+<body>
+    <label for="txtarea">Text Area: </label>
+    <input type="text" id="txtarea" value="">
+    <br><br>
+    <label for="wordcount">Word Count:</label>
+    <input type="text" id="wordcount" value="" disabled>
+    <br><br>
+    <label for="vowelscount">Vowel Count:</label>
+    <input type="text" id="vowelscount" value="" disabled>
+    <br><br>
+    <label for="sentencecount">Sentence Count:</label>
+    <input type="text" id="sentencecount" value="" disabled>
+    <br><br>
+    <button onclick="result()">Show Result</button>
+
+    <script>
+        function result() {
+            let text = document.getElementById("txtarea").value;
+            let words = document.getElementById("wordcount");
+            let vowels = document.getElementById("vowelscount");
+            let sentences = document.getElementById("sentencecount");
+
+            const wordamount = text.split(" ")
+            words.value = wordamount.length;
+
+            const vowelamount = text.match(/[aeiouAEIOU]/g) || [];
+            vowels.value = vowelamount.length;
+
+            const sentenceamount = text.match(/[.!?]/g) || [];
+            sentences.value = sentenceamount.length;
+        }
+    </script>
+
+</body>
