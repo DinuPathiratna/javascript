@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task 9</title>
+</head>
+<body>
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" value="">
+    <br><br>
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" value=""><br><br>
+    <button onclick="msg()">Show message</button>
+    
+    <script>
+        function msg() {
+            let first = document.getElementById("fname").value;
+            let last = document.getElementById("lname").value;
+            alert("Hello, " + first + " " + last + "!");
+        }
+    </script>
+</body>
+</html>
