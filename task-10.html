@@ -1,0 +1,19 @@
+<body>
+    <label for="1num">1st Number:</label>
+    <input type="text" id="1num" value="">
+    <br><br>
+
+    <label for="2num">2nd Number:</label>
+    <input type="text" id="2num" value="" disabled>
+    <br><br>
+
+    <button onclick="getSquareRoot()">Get Square Root</button>
+
+    <script>
+        function getSquareRoot() {
+            let numeric = document.getElementById("1num").value;
+            let result = Math.sqrt(numeric);
+            document.getElementById("2num").value = result;
+        }
+    </script>
+</body>
