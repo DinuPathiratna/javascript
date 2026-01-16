@@ -1,2 +1,2 @@
-# JAVA
-this repo is for java involved studies
+# JAVASCRIPT
+this repo is for javascript involved studies
