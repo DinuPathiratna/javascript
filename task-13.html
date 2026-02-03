@@ -1,0 +1,21 @@
+<button onclick="get_coordinates()">get coordinates</button>
+<br><br>
+<label for="latitude">Latitude</label>
+<input type="text" id="latitude">
+<br><br>
+<label for="longitude">Longitude</label>
+<input type="text" id="longitude">
+<script>
+    function get_coordinates() {
+        navigator.geolocation.getCurrentPosition(on_coordinates);
+    }
+    function on_coordinates(data) {
+        const latitude = data.coords.latitude;
+        const longitude = data.coords.longitude;
+
+        document.getElementById("latitude").value = latitude;
+        document.getElementById("longitude").value = longitude;
+        
+        console.log(latitude, longitude);
+    }
+</script>
