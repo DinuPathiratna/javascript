@@ -1,21 +1,49 @@
-<button onclick="get_coordinates()">get coordinates</button>
+<button id="btn">get coordinates</button>
 <br><br>
 <label for="latitude">Latitude</label>
-<input type="text" id="latitude">
+<input type="text" id="latitude" disabled>
 <br><br>
 <label for="longitude">Longitude</label>
-<input type="text" id="longitude">
-<script>
+<input type="text" id="longitude" disabled>
+
+<script type="module">
+    const cities = await fetch('cities.json').then(response => response.json());
+    console.log(cities)
+
     function get_coordinates() {
         navigator.geolocation.getCurrentPosition(on_coordinates);
     }
+    document.getElementById("btn").addEventListener("click", get_coordinates)
+
     function on_coordinates(data) {
+
         const latitude = data.coords.latitude;
         const longitude = data.coords.longitude;
 
         document.getElementById("latitude").value = latitude;
         document.getElementById("longitude").value = longitude;
-        
-        console.log(latitude, longitude);
+
+        const myLt = latitude;
+        const myLn = longitude;
+
+        const cityLt = 6.9271;   
+        const cityLn = 79.8612;
+
+        const value = Math.abs(cityLt - myLt) + Math.abs(cityLn - myLn);
+
+        console.log(value);
+
     }
+
+    const array = [12, 25, 15, 5, 21, 53]
+    let min = array[0]
+
+    for (let i = 1; i < array.length; i++) {
+        const item = array[i];
+        if (item < min) {
+            min = item
+        }
+    }
+    console.log(min)
+
 </script>
