@@ -1,3 +1,4 @@
+
 <button id="btn">get coordinates</button>
 <br><br>
 <label for="latitude">Latitude</label>
@@ -17,33 +18,36 @@
 
     function on_coordinates(data) {
 
-        const latitude = data.coords.latitude;
-        const longitude = data.coords.longitude;
+        // my current coordinates
+        const myLt = data.coords.latitude;
+        const myLn = data.coords.longitude;
 
-        document.getElementById("latitude").value = latitude;
-        document.getElementById("longitude").value = longitude;
+        // display my coordinates
+        document.getElementById("latitude").value = myLt;
+        document.getElementById("longitude").value = myLn;
 
-        const myLt = latitude;
-        const myLn = longitude;
+        // starting minimum as larger value
+        let min = Infinity
+        // no selected closest city initially
+        let closestCity = null
 
-        const cityLt = 6.9271;   
-        const cityLn = 79.8612;
-
-        const value = Math.abs(cityLt - myLt) + Math.abs(cityLn - myLn);
-
-        console.log(value);
-
-    }
-
-    const array = [12, 25, 15, 5, 21, 53]
-    let min = array[0]
-
-    for (let i = 1; i < array.length; i++) {
-        const item = array[i];
-        if (item < min) {
-            min = item
+        // for each city
+        for (let i = 0; i < cities.length; i++) {
+            // current city item
+            const city = cities[i]
+            // calculate distance value between my coordinates and current city coordinates
+            const value = Math.abs(city.latitude - myLt) + Math.abs(city.longitude - myLn)
+            // check if current value is smaller than previous value
+            if (min > value) {
+                // remember as minimum value
+                min = value
+                // remember current city as the closest city
+                closestCity = city
+            }
         }
+
+        // print closest city
+        console.log(closestCity)
     }
-    console.log(min)
 
 </script>
