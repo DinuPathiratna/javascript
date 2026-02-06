@@ -1,0 +1,26 @@
+<body>
+<input type="text" id="keyword" placeholder="Enter word to search">
+<br><br>
+<button id="btnSearch">Search</button>
+<br><br>
+<textarea id="textOutput" readonly></textarea>
+
+    <script type="module">
+
+        const words = await fetch("english-words.json").then(response => response.json());
+
+        document.getElementById("btnSearch").addEventListener("click", searchWords);
+
+
+        function searchWords() {
+
+            const keyword = document.getElementById("keyword").value.toLowerCase();
+            const filteredWords = words.filter(word => word.toLowerCase().includes(keyword));
+            const resultString = filteredWords.join(", ");
+
+            document.getElementById("textOutput").value = resultString;
+        }
+    </script>
+
+</body>
+</html>
