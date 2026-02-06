@@ -5,6 +5,22 @@
 <br><br>
 <label for="longitude">My Longitude</label>
 <input type="text" id="longitude" disabled>
+<br><br>
+<p>Information of your nearest city</p>
+<label for="nearCity">City</label>
+<input type="text" id="nearCity" disabled>
+<br><br>
+<label for="nearDistrict">District</label>
+<input type="text" id="nearDistrict" disabled>
+<br><br>
+<label for="nearLongitude">Longitude</label>
+<input type="text" id="nearLongitude" disabled>
+<br><br>
+<label for="nearLatitude">Latitude</label>
+<input type="text" id="nearLatitude" disabled>
+<br><br>
+<label for="nearPostal">Postal</label>
+<input type="text" id="nearPostal" disabled>
 
 <script type="module">
     const cities = await fetch('cities.json').then(response => response.json());
@@ -17,45 +33,33 @@
 
     function on_coordinates(data) {
 
-        // my current coordinates
         const myLt = data.coords.latitude;
         const myLn = data.coords.longitude;
 
-        // display my coordinates
         document.getElementById("latitude").value = myLt;
         document.getElementById("longitude").value = myLn;
 
-        // starting minimum as larger value
         let min = Infinity
-        // no selected closest city initially
         let closestCity = null
 
-        // for each city
         for (let i = 0; i < cities.length; i++) {
-            // current city item
             const city = cities[i]
-            // calculate distance value between my coordinates and current city coordinates
             const value = Math.abs(city.latitude - myLt) + Math.abs(city.longitude - myLn)
-            // check if current value is smaller than previous value
             if (min > value) {
-                // remember as minimum value
                 min = value
-                // remember current city as the closest city
                 closestCity = city
             }
         }
         const city = closestCity.city
+        document.getElementById("nearCity").value = city;
         const district = closestCity.district 
+         document.getElementById("nearDistrict").value = district;
         const latitude = closestCity.latitude
+         document.getElementById("nearLatitude").value = latitude;
         const longitude = closestCity.longitude
+         document.getElementById("nearLongitude").value = longitude;
         const postal = closestCity.postal
+         document.getElementById("nearPostal").value = postal;
 
-        // print closest city
-        console.log(city)
-        console.log(district)
-        console.log(latitude)
-        console.log(longitude)
-        console.log(postal)
     }
-//write info of closestcity
 </script>
