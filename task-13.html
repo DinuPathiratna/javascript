@@ -5,14 +5,6 @@
 <br><br>
 <label for="longitude">My Longitude</label>
 <input type="text" id="longitude" disabled>
-<br><br>
-<label for="distance">Distance between your latitude and the latitude of the closest city </label>
-<br><br>
-<input type="text" id="distance" disabled>
-<br><br>
-<label for="distanceLn">Distance between your longitude and the longitude of the closest city </label>
-<br><br>
-<input type="text" id="distanceLn" disabled>
 
 <script type="module">
     const cities = await fetch('cities.json').then(response => response.json());
@@ -52,16 +44,18 @@
                 closestCity = city
             }
         }
+        const city = closestCity.city
+        const district = closestCity.district 
+        const latitude = closestCity.latitude
+        const longitude = closestCity.longitude
+        const postal = closestCity.postal
 
         // print closest city
-        console.log(closestCity)
-
-        const distance = closestCity.latitude - myLt
-        document.getElementById("distance").value = distance;
-
-        const distanceLn = closestCity.longitude - myLn
-        document.getElementById("distanceLn").value = distanceLn;
-
+        console.log(city)
+        console.log(district)
+        console.log(latitude)
+        console.log(longitude)
+        console.log(postal)
     }
-
+//write info of closestcity
 </script>
