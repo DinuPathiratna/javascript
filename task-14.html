@@ -1,42 +1,50 @@
-<body>
-    <input type="text" id="keyword" placeholder="Enter word to search">
-    <br><br>
-    <label for="placement">Keyword Placement</label>
-    <br>
-    <select id="placement">
-        <option value="anywhere">Anywhere</option>
-        <option value="start">Starting with</option>
-        <option value="end">Ending with</option>
-    </select>
-    <br><br>
-    <button id="btnSearch">Search</button>
-    <br><br>
-    <textarea id="textOutput" readonly></textarea>
+<input type="text" id="keyword" placeholder="Enter word to search">
+<br><br>
+<select id="placement">
+    <option value="anywhere">Anywhere</option>
+    <option value="start">Starting with</option>
+    <option value="end">Ending with</option>
+</select>
+<br><br>
+<input type="number" id="minLength" placeholder="Minimum length">
+<br><br>
+<input type="number" id="maxLength" placeholder="Maximum length">
+<br><br>
+<button id="btnSearch">Search</button>
+<br><br>
+<textarea id="textOutput" readonly></textarea>
 
-    <script type="module">
+<script type="module">
+    const words = await fetch("english-words.json").then(res => res.json());
 
-        const words = await fetch("english-words.json").then(response => response.json());
+    document.getElementById("btnSearch").addEventListener("click", searchWords);
 
-        document.getElementById("btnSearch").addEventListener("click", searchWords);
+    function searchWords() {
+        const keyword = document.getElementById("keyword").value.toLowerCase();
+        const placement = document.getElementById("placement").value;
+        const minLength = Number(document.getElementById("minLength").value) || 0;
+        const maxLength = Number(document.getElementById("maxLength").value) || Infinity;
 
-        function searchWords() {
+        const result_1 = words.filter(word => {
+            const w = word.toLowerCase();
 
-            const keyword = document.getElementById("keyword").value.toLowerCase();
-            const placement = document.getElementById("placement").value;
+            if (placement === "start") return w.startsWith(keyword);
+            if (placement === "end") return w.endsWith(keyword);
+            return w.includes(keyword);
+        });
 
-            let results = [];
+        const result_2 = result_1.filter(word => {
+            return word.length >= minLength;
+        });
 
-            if (placement === "anywhere") {
-                results = words.filter(word => word.toLowerCase().includes(keyword));
-            } else if (placement === "start") {
-                results = words.filter(word => word.toLowerCase().startsWith(keyword));
-            } else if (placement === "end") {
-                results = words.filter(word => word.toLowerCase().endsWith(keyword));
-            }
+        const result_3 = result_2.filter(word => {
+            return word.length <= maxLength;
+        });
 
-            document.getElementById("textOutput").value = results.join(", ");
-        }
-    </script>
+        document.getElementById("textOutput").value = result_3.join(", ");
+    }
+</script>
+
 
 </body>
 
