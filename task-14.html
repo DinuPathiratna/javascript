@@ -1,9 +1,17 @@
 <body>
-<input type="text" id="keyword" placeholder="Enter word to search">
-<br><br>
-<button id="btnSearch">Search</button>
-<br><br>
-<textarea id="textOutput" readonly></textarea>
+    <input type="text" id="keyword" placeholder="Enter word to search">
+    <br><br>
+    <label for="placement">Keyword Placement</label>
+    <br>
+    <select id="placement">
+        <option value="anywhere">Anywhere</option>
+        <option value="start">Starting with</option>
+        <option value="end">Ending with</option>
+    </select>
+    <br><br>
+    <button id="btnSearch">Search</button>
+    <br><br>
+    <textarea id="textOutput" readonly></textarea>
 
     <script type="module">
 
@@ -11,16 +19,25 @@
 
         document.getElementById("btnSearch").addEventListener("click", searchWords);
 
-
         function searchWords() {
 
             const keyword = document.getElementById("keyword").value.toLowerCase();
-            const filteredWords = words.filter(word => word.toLowerCase().includes(keyword));
-            const resultString = filteredWords.join(", ");
+            const placement = document.getElementById("placement").value;
 
-            document.getElementById("textOutput").value = resultString;
+            let results = [];
+
+            if (placement === "anywhere") {
+                results = words.filter(word => word.toLowerCase().includes(keyword));
+            } else if (placement === "start") {
+                results = words.filter(word => word.toLowerCase().startsWith(keyword));
+            } else if (placement === "end") {
+                results = words.filter(word => word.toLowerCase().endsWith(keyword));
+            }
+
+            document.getElementById("textOutput").value = results.join(", ");
         }
     </script>
 
 </body>
+
 </html>
