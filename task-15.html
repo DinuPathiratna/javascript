@@ -1,0 +1,41 @@
+<select id="districtSelection"></select>
+<select id="CitySelection"></select>
+<br><br>
+<p>postal code</p>
+<label for="postal"></label>
+<input type="text" id="postal" disabled>
+
+<script type="module">
+
+    const Info = await fetch("postal-codes.json").then(res => res.json());
+    console.log(Info)
+
+    const districts = [
+        { value: "Central_Province", label: "Central Province" },
+        { value: "Eastern_Province", label: "Eastern Province" },
+        { value: "North_Central_Province", label: "North Central Province" },
+        { value: "North_Western_Province", label: "North Western Province" },
+        { value: "Northern_Province", label: "Northern Province" },
+        { value: "Province_Of_Uva", label: "Province Of Uva" },
+        { value: "Sabaragamuwa_Province", label: "Sabaragamuwa Province" },
+        { value: "Southern_Province", label: "Southern Province" },
+        { value: "Western_Province", label: "Western Province" }
+    ]
+
+    const selectDistrict = document.getElementById("districtSelection")
+    const SelectCity = document.getElementById("CitySelection")
+
+    for (let i = 0; i < districts.length; i++) {
+        const district = districts[i]
+        const optionElement = document.createElement("option")
+        optionElement.innerText = district.label
+        optionElement.value = district.value
+        selectDistrict.appendChild(optionElement)
+    }
+
+    selectDistrict.addEventListener("change", function () {
+        console.log(selectDistrict.value)
+        SelectCity.innerHTML = ""
+    })
+
+</script>
