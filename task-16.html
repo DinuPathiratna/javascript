@@ -1,0 +1,11 @@
+<script type="module">
+    
+    const colors = await fetch("colors.json").then(res => res.json());
+    const keys = Object.keys(colors)
+
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i]
+        console.log("name:",key,"code:", colors[key])
+    }
+
+</script>
