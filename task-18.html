@@ -2,7 +2,7 @@
     const words = await fetch("english-words.json").then(res => res.json());
     const letters = {a: [], b: [], c: [], d: [], e: [], f: [], g: [], h: [], i: [], j: [], k: [], l: [], m: [], n: [], o: [], p: [], q: [], r: [], s: [], t: [], u: [], v: [], w: [], x: [], y: [], z: []}
    
-    for (let i = 0; i < Object.keys(letters).length; i++) {
+    for (let i = 0; i < Object.keys(letters).length; i++) { //loops while length of the keys in words 
         const letter = Object.keys(letters)[i];
         console.log({letter: letter, words: words.filter(word => word.startsWith(letter))})
     }
