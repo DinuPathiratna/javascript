@@ -4,11 +4,22 @@
     const keys = Object.keys(colors) // get the keys
     const values = Object.values(colors) //get the values
     const arr = []
-
+    //outputs all color data
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i]
         const value = values[i]
-        console.log({name: key, code: value})
+        console.log({ name: key, code: value })
     }
+
+    const red = []
+    const green = []
+    const blue = []
+    //outputs only rgb data
+    for (let i = 0; i < values.length; i++) {
+        const key = keys[i]
+        const val = values[i]
+        //red
+        console.log(val.includes("FF"    ))
+        console.log(key, val)}
 
 </script>
