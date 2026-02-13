@@ -15,11 +15,36 @@
     const green = []
     const blue = []
     //outputs only rgb data
+//red
+    for (let i = 0; i < values.length; i++) {
+        const key = keys[i]
+        const val = values[i]
+        if (val.substring(1, 3) === "FF") {
+            red.push({ name: key, code: val })
+
+        } 
+    }
+console.log(red)
+
+//green
     for (let i = 0; i < values.length; i++) {
         const key = keys[i]
         const val = values[i]
         //red
-        console.log(val.includes("FF"    ))
-        console.log(key, val)}
+        if (val.substring(2, 4) === "FF") {
+            green.push({ name: key, code: val })
 
+        } 
+    }
+console.log(green)
+//blue
+    for (let i = 0; i < values.length; i++) {
+        const key = keys[i]
+        const val = values[i]
+        if (val.substring(4, 6) === "FF") {
+            blue.push({ name: key, code: val })
+
+        } 
+    }
+console.log(blue)
 </script>
