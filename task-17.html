@@ -1,0 +1,14 @@
+<script type="module">
+    const postalData = await fetch("postal-codes.json").then(res => res.json());//get data
+    const newData = postalData.map(districtObj => { //map through data and create new object
+
+//create cities object with city name as key and postal code as value
+    const citiesObject = Object.fromEntries(
+        districtObj.cities.map(item => [item.city, item.code]));
+        return { 
+            district: districtObj.district, //district name
+            cities: citiesObject //cities n postal codes in an object
+        };
+    });
+    console.log(newData);
+</script>
