@@ -1,0 +1,13 @@
+<script type="module">
+    const extensions = await fetch("object/mime-types.json").then(res => res.json());
+    const keys = Object.keys(extensions) // get the keys
+    const values = Object.values(extensions) //get the values
+    const output = []
+    
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i]
+        const value = values[i]
+        output.push({ extension:key, name:value.name, type:value.type.split('/')[0], subType:value.type })
+    }
+    console.log(output)
+</script>
