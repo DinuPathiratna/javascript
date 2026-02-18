@@ -1,5 +1,5 @@
 <script type="module">
-    const colors = await fetch("colors.json").then(res => res.json());
+    const colors = await fetch("object/colors.json").then(res => res.json());
 
     const keys = Object.keys(colors) // get the keys
     const values = Object.values(colors) //get the values

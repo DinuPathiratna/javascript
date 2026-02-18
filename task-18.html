@@ -1,9 +1,28 @@
+
 <script type="module">
-    const words = await fetch("english-words.json").then(res => res.json());
-    const letters = {a: [], b: [], c: [], d: [], e: [], f: [], g: [], h: [], i: [], j: [], k: [], l: [], m: [], n: [], o: [], p: [], q: [], r: [], s: [], t: [], u: [], v: [], w: [], x: [], y: [], z: []}
-   
-    for (let i = 0; i < Object.keys(letters).length; i++) { //loops while length of the keys in words 
-        const letter = Object.keys(letters)[i];
-        console.log({letter: letter, words: words.filter(word => word.startsWith(letter))})
+  // load all the words
+  const words = await fetch("object/english-words.json").then(res => res.json())
+  // create empty output array
+  const letters = []
+  // for each word
+  for (let i = 0; i < words.length; i++) {
+    // current word
+    const word = words[i]
+    // current letter (first letter of the current word)
+    const letter = word[0]
+    // find an object with letter prop is equals to current letter
+    const object = letters.find(item => item.letter === letter)
+    // check if object found
+    if (object) {
+      // push word into found object's words
+      object.words.push(word)
+    } else {
+      // push new object for the letter with current word
+      letters.push({ letter, words: [word] })
     }
+  }
+
+  // display output
+  console.log(letters)
+
 </script>

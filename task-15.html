@@ -7,7 +7,7 @@
 
 <script type="module">
 
-    const info = await fetch("postal-codes.json").then(res => res.json());
+    const info = await fetch("object/postal-codes.json").then(res => res.json());
     console.log(info)
 
     const selectDistrict = document.getElementById("districtSelection")
@@ -17,7 +17,7 @@
     for (let i = 0; i < info.length; i++) {
         const data = info[i]
         const optionElement = document.createElement("option") //creates option
-        optionElement.innerText = data.district //options equal to info.district(district)
+        optionElement.innerText = data.district 
         optionElement.value = data.district
         selectDistrict.appendChild(optionElement)
     }

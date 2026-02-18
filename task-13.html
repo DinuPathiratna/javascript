@@ -23,7 +23,7 @@
 <input type="text" id="nearPostal" disabled>
 
 <script type="module">
-    const cities = await fetch('cities.json').then(response => response.json());
+    const cities = await fetch('object/cities.json').then(response => response.json());
     console.log(cities)
 
     function get_coordinates() {

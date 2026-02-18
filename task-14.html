@@ -15,7 +15,7 @@
 <textarea id="textOutput" readonly></textarea>
 
 <script type="module">
-    const words = await fetch("english-words.json").then(res => res.json());
+    const words = await fetch("object/english-words.json").then(res => res.json());
 
     document.getElementById("btnSearch").addEventListener("click", searchWords);
 
