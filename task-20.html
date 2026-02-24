@@ -1,0 +1,29 @@
+<script type="module">
+  const animals = await fetch("object/animals.json").then(res => res.json());
+  const output = []
+
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i]
+    const lifespan = Object.keys(animal).find(key => key.includes("Lifespan"))
+    if (lifespan) {
+      output.push({ name: animal.name, lifespan: parseFloat(animal[lifespan]) * 365 })
+    }
+  }
+   
+</script>
+
+
+
+
+1. Load objects/animals.json
+2. Filter animals with "Lifespan" prop
+3. parseFloat, String.includes
+4. Expected output:
+
+[
+{
+name: "Baboon",
+lifespan: 5475
+},
+.....
+]
