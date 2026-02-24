@@ -1,30 +1,25 @@
 <script type="module">
-  const animals = await fetch("object/animals.json").then(res => res.json());
-  const output = []
-
-  for (let i = 0; i < animals.length; i++) {
-    const animal = animals[i]
-    const lifespan = Object.keys(animal).find(key => key.includes("Lifespan"))
-    if (lifespan) {
-      output.push({ name: animal.name, lifespan: parseFloat(animal[lifespan]) * 365 })
+  const letters = await fetch("object/animals.json").then(res => res.json());
+  const output = [];
+  // Loop through each letter and its animals
+  for (let i = 0; i < letters.length; i++) {
+    const letter = letters[i];
+    const animals = letter.animals;
+    // Loop through each animal and take its lifespan
+    for (let j = 0; j < animals.length; j++) {
+      const animal = animals[j];
+      const characteristics = animal.characteristics;
+      const lifespan = characteristics.find(c => c.name === "Lifespan");
+      //convert it to days and add to output
+      if (lifespan && lifespan.value) {
+        if (lifespan.value.includes("year")) {
+          const years = parseFloat(lifespan.value);
+          const days = years * 365;
+          output.push({name: animal.name,lifespan: days});
+        }
+      }
     }
   }
-  console.log(output)
-   
+
+  console.log(output);
 </script>
-
-
-
-
-1. Load objects/animals.json
-2. Filter animals with "Lifespan" prop
-3. parseFloat, String.includes
-4. Expected output:
-
-[
-{
-name: "Baboon",
-lifespan: 5475
-},
-.....
-]
