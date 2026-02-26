@@ -1,39 +1,67 @@
+
 <script type="module">
 
+  // load animals.json file content
   const data = await fetch("object/animals.json").then(res => res.json())
 
-  const output = {}
+  // output array
+  const output = []
 
+  // get letters array
   const letters = Object.keys(data)
 
+  // for each letter
   for (let i = 0; i < letters.length; i++) {
 
+    // current letter
     const letter = letters[i]
+
+    // get animals of the letter
     const animalsByLetter = data[letter]
+
+    // get animal names
     const animalNames = Object.keys(animalsByLetter)
 
-    output[letter] = []
-
+    // for each name
     for (let n = 0; n < animalNames.length; n++) {
 
+      // current animal name
       const animalName = animalNames[n]
-      const animalData = animalsByLetter[animalName]
 
+      // get animal data
+      const animalData = animalsByLetter[animalName]
+      
+      // check if Characteristics available in data
       if ("Characteristics" in animalData) {
+
+        // check if Lifespan in Characteristics
         if ("Lifespan" in animalData.Characteristics) {
+
+          // get Lifespan text
           const text = animalData.Characteristics.Lifespan
+
+          // convert to float value
           const value = parseFloat(text)
 
+          // check if value is valid
           if (isNaN(value) === false) {
-            const unit = text.split(" ").pop()
-            output[letter].push({name: animalName,Lifespan: value,unit: unit})
 
+            // get Lifespan unit
+            const unit = text.split(" ").pop()
+
+            if (unit.includes("years")) {
+
+              const convertDays = value * 365
+              
+              output.push({name: animalName, Lifespan: convertDays})
+            }
           }
         }
       }
     }
   }
 
+  // display output
   console.log(output)
 
 </script>
