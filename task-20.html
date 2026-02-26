@@ -1,25 +1,39 @@
 <script type="module">
-  const letters = await fetch("object/animals.json").then(res => res.json());
-  const output = [];
-  // Loop through each letter and its animals
+
+  const data = await fetch("object/animals.json").then(res => res.json())
+
+  const output = {}
+
+  const letters = Object.keys(data)
+
   for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i];
-    const animals = letter.animals;
-    // Loop through each animal and take its lifespan
-    for (let j = 0; j < animals.length; j++) {
-      const animal = animals[j];
-      const characteristics = animal.characteristics;
-      const lifespan = characteristics.find(c => c.name === "Lifespan");
-      //convert it to days and add to output
-      if (lifespan && lifespan.value) {
-        if (lifespan.value.includes("year")) {
-          const years = parseFloat(lifespan.value);
-          const days = years * 365;
-          output.push({name: animal.name,lifespan: days});
+
+    const letter = letters[i]
+    const animalsByLetter = data[letter]
+    const animalNames = Object.keys(animalsByLetter)
+
+    output[letter] = []
+
+    for (let n = 0; n < animalNames.length; n++) {
+
+      const animalName = animalNames[n]
+      const animalData = animalsByLetter[animalName]
+
+      if ("Characteristics" in animalData) {
+        if ("Lifespan" in animalData.Characteristics) {
+          const text = animalData.Characteristics.Lifespan
+          const value = parseFloat(text)
+
+          if (isNaN(value) === false) {
+            const unit = text.split(" ").pop()
+            output[letter].push({name: animalName,Lifespan: value,unit: unit})
+
+          }
         }
       }
     }
   }
 
-  console.log(output);
+  console.log(output)
+
 </script>
