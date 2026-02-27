@@ -1,0 +1,24 @@
+<script type="module">
+    const letters = await fetch("object/animals.json").then(res => res.json());
+    const grouped = {};
+
+    for (const letterKey in letters) {
+        const animals = letters[letterKey];
+
+        for (const animalName in animals) {
+            const animal = animals[animalName];
+
+            if (animal.Classification && animal.Classification.Class) {\
+                const className = animal.Classification.Class;
+
+                if (!grouped[className])
+                {grouped[className] = [];
+                }
+
+                grouped[className].push(animalName);
+            }
+        }
+    }
+
+    console.log(grouped);
+</script>
