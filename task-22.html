@@ -1,0 +1,46 @@
+<script type="module">
+    const data = await fetch("object/animals.json").then(res => res.json())
+    console.log(data)
+    const findAnimals = (className, minLifespan, maxLifespan) => {
+        const output = []
+        const letters = Object.keys(data)
+        for (let i = 0; i < letters.length; i++) {
+            const animals = data[letters[i]]
+
+            for (let j = 0; j < animals.length; j++) {
+                const animal = animals[j]
+                if (animal.Classification.Class === className) {
+                    const lifespanDays = animal.lifespan * 365
+                    let valid = true
+                    if (minLifespan !== null) {
+                        if (lifespanDays < minLifespan) {
+                            valid = false }
+                    }
+
+                    if (maxLifespan !== null) {
+                        if (lifespanDays > maxLifespan) {
+                            valid = false
+                        }
+                    }
+
+                    if (valid) {
+                        output.push({
+                            name: animal.name,
+                            lifespan: lifespanDays
+                        })
+                    }
+
+                }
+
+            }
+        }
+
+        return output
+    }
+
+    console.log(findAnimals("Actinopterygii", 200, 1200))
+    console.log(findAnimals("Cephalopoda", null, 1200))
+    console.log(findAnimals("Mammalia", 200, null))
+
+
+</script>
