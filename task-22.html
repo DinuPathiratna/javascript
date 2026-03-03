@@ -21,11 +21,13 @@
                 if (animal.Classification?.Class === className) {
 
                     const lifespanYears = parseInt(animal.Characteristics.Lifespan)
+                    if (isNaN(lifespanYears)) continue
 
                     const lifespanDays = lifespanYears * 365
 
                     if (minLifespan !== null && lifespanDays < minLifespan) continue
                     if (maxLifespan !== null && lifespanDays > maxLifespan) continue
+
 
                     output.push({
                         name: name,
