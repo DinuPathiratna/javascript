@@ -1,37 +1,37 @@
 <script type="module">
-    const data = await fetch("object/animals.json").then(res => res.json())
-    console.log(data)
+
+    const data = await fetch("object/animals.json")
+        .then(res => res.json())
+
     const findAnimals = (className, minLifespan, maxLifespan) => {
         const output = []
+
         const letters = Object.keys(data)
+
         for (let i = 0; i < letters.length; i++) {
-            const animals = data[letters[i]]
+            const letter = letters[i]
+            const animals = data[letter]
 
-            for (let j = 0; j < animals.length; j++) {
-                const animal = animals[j]
-                if (animal.Classification.Class === className) {
-                    const lifespanDays = animal.lifespan * 365
-                    let valid = true
-                    if (minLifespan !== null) {
-                        if (lifespanDays < minLifespan) {
-                            valid = false }
-                    }
+            const animalNames = Object.keys(animals)
 
-                    if (maxLifespan !== null) {
-                        if (lifespanDays > maxLifespan) {
-                            valid = false
-                        }
-                    }
+            for (let j = 0; j < animalNames.length; j++) {
+                const name = animalNames[j]
+                const animal = animals[name]
 
-                    if (valid) {
-                        output.push({
-                            name: animal.name,
-                            lifespan: lifespanDays
-                        })
-                    }
+                if (animal.Classification?.Class === className) {
 
+                    const lifespanYears = parseInt(animal.Characteristics.Lifespan)
+
+                    const lifespanDays = lifespanYears * 365
+
+                    if (minLifespan !== null && lifespanDays < minLifespan) continue
+                    if (maxLifespan !== null && lifespanDays > maxLifespan) continue
+
+                    output.push({
+                        name: name,
+                        lifespan: lifespanDays
+                    })
                 }
-
             }
         }
 
@@ -41,6 +41,5 @@
     console.log(findAnimals("Actinopterygii", 200, 1200))
     console.log(findAnimals("Cephalopoda", null, 1200))
     console.log(findAnimals("Mammalia", 200, null))
-
 
 </script>
