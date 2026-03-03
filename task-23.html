@@ -1,0 +1,23 @@
+<script type="module">
+
+const data = await fetch("object/fireflies.json").then(res => res.json())
+
+const output = []
+
+for (let i = 0; i < data.length; i++) {
+  const item = data[i]
+
+  const times = item.time.split(" --> ")
+  const fromParts = times[0].split(":") 
+  const toParts = times[1].split(":")
+
+  const fromSeconds = Number(fromParts[0]) * 3600 + Number(fromParts[1]) * 60 + Number(fromParts[2].replace(",", "."))
+
+  const toSeconds = Number(toParts[0]) * 3600 + Number(toParts[1]) * 60 + Number(toParts[2].replace(",", "."))
+
+  output.push({from: fromSeconds,to: toSeconds,text: item.text})
+}
+
+console.log(output)
+
+</script>
