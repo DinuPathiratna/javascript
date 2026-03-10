@@ -1,28 +1,49 @@
-<audio controls>
+<audio id="myAudio" controls>
   <source src="object/fireflies.json" type="audio/ogg">
   <source src="object/fireflies.mp3" type="audio/mpeg">
 </audio>
+
 <script type="module">
 
-const data = await fetch("object/fireflies.json").then(res => res.json())
+  const data = await fetch("object/fireflies.json").then(res => res.json())
 
-const output = []
+  const output = []
 
-for (let i = 0; i < data.length; i++) {
-  const item = data[i]
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i]
 
-  const times = item.time.split(" --> ")
-  const fromParts = times[0].split(":") 
-  const toParts = times[1].split(":")
+    const times = item.time.split(" --> ")
+    const fromParts = times[0].split(":")
+    const toParts = times[1].split(":")
 
-  const fromSeconds = Number(fromParts[0]) * 3600 + Number(fromParts[1]) * 60 + Number(fromParts[2].replace(",", "."))
+    const fromSeconds = Number(fromParts[0]) * 3600 + Number(fromParts[1]) * 60 + Number(fromParts[2].replace(",", "."))
 
-  const toSeconds = Number(toParts[0]) * 3600 + Number(toParts[1]) * 60 + Number(toParts[2].replace(",", "."))
+    const toSeconds = Number(toParts[0]) * 3600 + Number(toParts[1]) * 60 + Number(toParts[2].replace(",", "."))
 
-  output.push({from: fromSeconds,to: toSeconds,text: item.text})
-}
+    const getText = item.text
+    output.push({ from: fromSeconds, to: toSeconds, text: item.text })
+  }
 
-setInterval(function() {element.innerHTML += text}, fromSeconds);
-console.log(output)
+  console.log(output)
+
+  const audio = document.getElementById("myAudio")
+
+  setInterval(() => {
+    console.log(audio.currentTime)
+
+  }, 2500);
+
+
+  function getCurrentText() {
+    
+    const currentTime = audio.currentTime
+    const currentItem = output.find(item => currentTime >= item.from && currentTime <= item.to)
+
+    if (currentItem) {
+      console.log(currentItem.text)
+    }
+  }
+
+  audio.addEventListener("timeupdate", getCurrentText)
 
 </script>
