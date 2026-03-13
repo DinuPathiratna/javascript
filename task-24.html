@@ -1,0 +1,28 @@
+<label for="inputText">Type file name: </label>
+<input type="text" id="inputText">
+<br><br>
+<label for="textAreaInput">Type file content: </label>
+<textarea id="textAreaInput"></textarea>
+<br><br>
+<button id="downloadBtn">Download</button>
+
+<script>
+   const fileName = document.getElementById("inputText")
+   const textareaInput = document.getElementById("textAreaInput")
+   const Btn = document.getElementById("downloadBtn")
+
+   //Click event to download the file
+   Btn.addEventListener("click", () => {
+
+      const blob = new Blob([textareaInput.value], { type: "text/plain" })
+      const url = URL.createObjectURL(blob)
+
+      //make anchor element
+
+      const a = document.createElement("a")
+      a.href = url     //set the href to the url of the blob
+      a.download = fileName.value      //set the download attribute to the file name
+      a.click()
+   })
+
+</script>
