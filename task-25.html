@@ -1,0 +1,41 @@
+<label for="rcptsMail">enter email addresses: </label>
+<input type="text" id="rcptsMail">
+<br><br>
+
+<label for="subject">enter subject: </label>
+<input type="text" id="subject">
+<br><br>
+
+<label for="content">enter content: </label>
+<br><br>
+
+<textarea id="content"></textarea>
+<br><br>
+
+<label for="cc">enter cc: </label>
+<textarea id="cc"></textarea>
+<br><br>
+
+<label for="Btn"></label>
+<button id="Btn">create email</button>
+
+<script>
+    const btn = document.getElementById("Btn");
+    btn.addEventListener("click", function () {
+
+        const rcptsMail = document.getElementById("rcptsMail").value;
+        const subject = document.getElementById("subject").value;
+        const content = document.getElementById("content").value;
+        const cc = document.getElementById("cc").value;
+        const url = new URL("mailto:" + rcptsMail);
+
+        const params = new URLSearchParams({
+            to: rcptsMail,
+            subject: subject,
+            body: content,
+            cc: cc
+        });
+        url.search = params.toString().replace(/\+/g, "%20");
+        window.open(url.toString());
+    });
+</script>
