@@ -5,6 +5,9 @@
 <textarea id="textAreaInput"></textarea>
 <br><br>
 <button id="downloadBtn">Download</button>
+<br><br>
+<label for="Button"> </label>
+<input type="button" id="Button" value="Turn On Close Confirmation">
 
 <script>
    const fileName = document.getElementById("inputText")
@@ -18,11 +21,29 @@
       const url = URL.createObjectURL(blob)
 
       //make anchor element
-
       const a = document.createElement("a")
       a.href = url     //set the href to the url of the blob
       a.download = fileName.value      //set the download attribute to the file name
       a.click()
    })
+   //get button
+   const button = document.querySelector("#Button")
+   //current state of the button
+   let isLocked = false
 
+   button.addEventListener("click", () => {
+      isLocked = !isLocked
+      
+      if (isLocked) {
+         button.value = "Turn Off Close Confirmation"
+      } else {
+         button.value = "Turn On Close Confirmation"
+      }
+      button.setAttribute("data-locked", isLocked)
+   })
+
+   window.addEventListener("beforeunload", event => {
+      if (!isLocked) { return }
+      event.preventDefault()
+   })
 </script>
