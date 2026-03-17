@@ -1,0 +1,21 @@
+<body>
+
+<p>username: <input type="text" id="name"></p>
+<p>age: <input type="text" id="age"></p>
+<p>town: <input type="text" id="town"></p>
+
+<button onclick="window.print()">print</button>
+
+<script>
+    // Listen for messages from the parent window
+window.addEventListener("message", (event) => {
+    // Get the data sent from the parent window
+    const data = event.data
+    // Update the input fields with the received data
+    document.getElementById("name").value = data.name
+    document.getElementById("age").value = data.age
+    document.getElementById("town").value = data.town
+})
+</script>
+
+</body>
