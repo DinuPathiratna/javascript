@@ -22,15 +22,18 @@
       a.download = fileName.value
       a.click()
    })
-   //confirmation msg when exiting the tab if user has inputted text but hasn't downloaded the file
-   window.addEventListener("input", () => {
-      //confirmation if user tries to exit
-      window.addEventListener("beforeunload", (e) => {
-         //check if filename or textarea has value, if not confirmation message will pop up
-         if (fileName.value !== "" || textareaInput.value !== "") {
-            //confirmation message
-            e.preventDefault()
-         }
-      })
+
+   let isFileSaved = false
+   //Click event to set isFileSaved to true when the file is downloaded
+   Btn.addEventListener("click", () => {
+      isFileSaved = true
    })
+   //Event listener for beforeunload to show confirmation message if the file is not saved
+   window.addEventListener("beforeunload", (event) => {
+      if (!isFileSaved) {
+         event.preventDefault()
+      }
+   })
+
+ 
 </script>
