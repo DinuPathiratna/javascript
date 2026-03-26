@@ -1,16 +1,13 @@
 <label for="input"> search color:</label>
 <input type="text" id="input">
-<button id="button" onclick="getData()">Get Data</button>
+<button id="button" onclick="getData()">Get data</button>
 
 <script>
     async function getData() {
-        const data = await fetch("https://apis.dnjs.lk/objects/colors.php?search=red");
-        const response = await data.json();
-
-        const input = document.getElementById("input").value;
-
-        const filteredData = response.filter(item => item.name.toLowerCase().includes(input.toLowerCase()));
-        
-        console.log(filteredData);
+        const keyword = document.getElementById("input").value;
+        const url = "https://apis.dnjs.lk/objects/colors.php?search=" + keyword;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
     }
 </script>
