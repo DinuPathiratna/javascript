@@ -1,21 +1,40 @@
-<body>
-
-<p>username: <input type="text" id="name"></p>
-<p>age: <input type="text" id="age"></p>
-<p>town: <input type="text" id="town"></p>
-
-<button onclick="window.print()">print</button>
+<label for="name">name:</label>
+<input type="text" id="name">
+<br><br>
+<label for="age">age:</label>
+<input type="text" id="age">
+<br><br>
+<label for="town">town:</label>
+<input type="text" id="town">
+<br><br>
+<button id="printButton">print</button>
 
 <script>
-    // Listen for messages from the parent window
-window.addEventListener("message", (event) => {
-    // Get the data sent from the parent window
-    const data = event.data
-    // Update the input fields with the received data
-    document.getElementById("name").value = data.name
-    document.getElementById("age").value = data.age
-    document.getElementById("town").value = data.town
-})
+    const button = document.getElementById("printButton");
+    const nameInput = document.getElementById("name");
+    const ageInput = document.getElementById("age");
+    const townInput = document.getElementById("town");
+
+    button.addEventListener("click", () => {
+
+        const iframe = document.createElement("iframe")
+        iframe.style.display = "none"
+
+        iframe.addEventListener("load", () => {
+            iframe.contentDocument.querySelector("#name").innerHTML = nameInput.value
+            iframe.contentDocument.querySelector("#age").innerHTML = ageInput.value
+            iframe.contentDocument.querySelector("#town").innerHTML = townInput.value
+
+            iframe.contentWindow.print()
+            setTimeout(() => iframe.remove(), 100)
+        })
+
+        iframe.src = "task-26-print.html"
+        document.body.appendChild(iframe)
+
+        iframe.contentWindow.print()
+    })
 </script>
 
 </body>
+</html>
