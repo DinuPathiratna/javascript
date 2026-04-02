@@ -1,0 +1,31 @@
+<script>
+    const random = 1 + Math.floor(Math.random() * 10)
+    let count = 1
+
+
+    while (count <= 4) {
+
+        const guess = prompt("enter your guess(1-10): ")
+
+        if (guess == random) {
+            console.log("correct")
+            break
+        }
+
+        else {
+            if (guess < random) {
+                console.log('answer is greater')
+            }
+
+            else {
+                console.log("answer is lesser")
+            }
+        
+        }
+        count = count + 1
+
+
+    }
+    console.log("answer",random)
+
+</script>
