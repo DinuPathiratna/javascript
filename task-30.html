@@ -1,9 +1,20 @@
 <script>
+    const option = prompt("choose difficulty (1,2,3): ")
     const random = 1 + Math.floor(Math.random() * 10)
     let count = 1
+    let Num = ""
 
+    if (option == 1) {
+        Num = 6
+    }
+    else if (option == 2) {
+        Num = 4
+    }
+    else if (option == 3) {
+        Num = 3
+    }
 
-    while (count <= 4) {
+    while (count <= Num) {
 
         const guess = prompt("enter your guess(1-10): ")
 
@@ -20,12 +31,12 @@
             else {
                 console.log("answer is lesser")
             }
-        
+
         }
         count = count + 1
 
 
     }
-    console.log("answer",random)
+    console.log("answer is", random)
 
 </script>
