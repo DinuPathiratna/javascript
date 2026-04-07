@@ -1,0 +1,9 @@
+<script>
+    const m = parseInt(prompt("Enter joined month index (1-12):"));
+    const monthlySalary = 50000;
+    const totalMonths = 12;
+    const monthsWorked = totalMonths - m + 1;
+    const fullGroups = Math.floor(monthsWorked / 3);
+    const totalSalary = fullGroups * 3 * monthlySalary;
+    console.log("Total Salary for this year: " + totalSalary);
+</script>
