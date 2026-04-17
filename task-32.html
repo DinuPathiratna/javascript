@@ -1,0 +1,38 @@
+<script>
+const Count = parseInt(prompt("Enter number of subjects:"));
+
+let total = 0;
+let passCount = 0;
+let failCount = 0;
+let max = 0;
+let min = 100;
+
+for (let i = 1; i <= Count; i++) {
+    let mark = parseFloat(prompt("Enter mark for subject :"))
+
+    total = total + mark;
+
+    if (mark >= 50) {
+        passCount++;
+    } else {
+        failCount++;
+    }
+
+    if (mark > max) {
+        max = mark;
+    }
+
+    if (mark < min) {
+        min = mark;
+    }
+}
+
+let average = total / Count;
+
+console.log("Total:", total);
+console.log("Average:", average);
+console.log("Maximum:", max);
+console.log("Minimum:", min);
+console.log("Passed subjects:", passCount);
+console.log("Failed subjects:", failCount);
+</script>
