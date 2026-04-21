@@ -1,0 +1,36 @@
+<script>
+const sub_count = parseInt(prompt("Enter subject count: "));
+const stu_count = parseInt(prompt("Enter student count: "));
+
+let totalAverage = 0;
+let HSname = "";
+let HSaverage = 0;
+
+let nStu = 1;
+
+while (nStu <= stu_count) {
+    const stu_name = prompt("Enter student name: ");
+    let stuTotal = 0;
+
+    let nSub = 1;
+    while (nSub <= sub_count) {
+        const mark = parseInt(prompt("Enter mark: "));
+        stuTotal += mark;
+        nSub++;
+    }
+
+    const stuAve = stuTotal / sub_count;
+    totalAverage += stuAve;
+
+    if (stuAve > HSaverage) {
+        HSaverage = stuAve;
+        HSname = stu_name;
+    }
+
+    nStu++;
+}
+
+console.log("Highest student name:", HSname);
+console.log("Highest average:", HSaverage);
+
+</script>
