@@ -1,0 +1,33 @@
+  <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" /> 
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+
+<body>
+<textarea id="codeInput"></textarea>
+<br><br>
+<select id="language">
+  <option value="javascript">JavaScript</option>
+  <option value="css">CSS</option>
+  <option value="html">HTML</option>
+</select>
+<button onclick="highlightCode()">Display Syntax Highlighted</button>
+<pre id="output"></pre>
+
+<script>
+    
+function highlightCode() {
+  const code = document.getElementById("codeInput").value;
+  const lang = document.getElementById("language").value;
+  const output = document.getElementById("output");
+
+  const grammar = Prism.languages[lang];
+
+  const highlighted = Prism.highlight(code, grammar, lang);
+
+  output.innerHTML = highlighted;
+}
+</script>
+</body>
