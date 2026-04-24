@@ -2,13 +2,21 @@
 </head>
 
 <body>
-    <script>
+    <script type="module">
+        const dataFiles = await fetch("index.json").then(res => res.json());
 
-        const a = document.createElement("a")
-        a.href = "https://google.com"
-        a.innerHTML  = "go to google"
-        document.body.appendChild(a)
+        for (const data of dataFiles) {
+            for (i = 0; i< Object.keys(data);i++){
+                const key = Object.keys(data)[i]
+                console.log()
+            }
+            console.log(data.file)
+        }
         
     </script>
 </body>
 </html>
+const a = document.createElement("a")
+        a.href = "https://google.com"
+        a.innerHTML  = "go to google"
+        document.body.appendChild(a)
