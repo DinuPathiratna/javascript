@@ -1,6 +1,6 @@
 <script type="module">
 
-    const data = await fetch("object/animals.json")
+    const data = await fetch("data/animals.json")
         .then(res => res.json())
 
     const findAnimals = (className, minLifespan, maxLifespan) => {

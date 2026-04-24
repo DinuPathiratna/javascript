@@ -1,5 +1,5 @@
 <script type="module">
-    const letters = await fetch("object/animals.json").then(res => res.json());
+    const letters = await fetch("data/animals.json").then(res => res.json());
     const grouped = {};
 
     for (const letterKey in letters) {

@@ -1,5 +1,5 @@
 <script type="module">
-    const extensions = await fetch("object/mime-types.json").then(res => res.json());
+    const extensions = await fetch("data/mime-types.json").then(res => res.json());
     const keys = Object.keys(extensions) // get the keys
     const values = Object.values(extensions) //get the values
     const output = []
