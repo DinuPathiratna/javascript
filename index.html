@@ -1,22 +1,27 @@
 <head>
 </head>
+<script>
+  fetch("index.json").then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
 
-<body>
-    <script type="module">
-        const dataFiles = await fetch("index.json").then(res => res.json());
+      for (let i = 0; i < data.length; i++) {
 
-        for (const data of dataFiles) {
-            for (i = 0; i< Object.keys(data);i++){
-                const key = Object.keys(data)[i]
-                console.log()
-            }
-            console.log(data.file)
-        }
-        
-    </script>
-</body>
+        let task = data[i];
+
+        let link = document.createElement("a");
+        link.href = "tasks/" + task.file;
+        link.innerHTML = "Task " + task.task + ": " + task.name;
+
+        let info = document.createElement("p");
+        info.innerHTML = task.info;
+        document.body.appendChild(link);
+        document.body.appendChild(info);
+
+      }
+
+    });
+</script>
+
 </html>
-const a = document.createElement("a")
-        a.href = "https://google.com"
-        a.innerHTML  = "go to google"
-        document.body.appendChild(a)

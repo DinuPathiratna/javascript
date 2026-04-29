@@ -1,14 +1,218 @@
 [
   {
+    "task": 0,
+    "file": "task-0.html",
+    "name": "Replacing digits ",
+    "info": "prints name and number replacing the first 6 digits with *"
+  },
+  {
+    "task": 1,
     "file": "task-1.html",
-    "name": "finds word count of given paragraph"
+    "name": "Word Count",
+    "info": "Finds word count of given paragraph"
   },
   {
+    "task": 2,
     "file": "task-2.html",
-    "name": "asks for 2 numbers, outputs the larger number"
+    "name": "Larger Number",
+    "info": "Asks for 2 numbers and outputs the larger number"
   },
   {
+    "task": 3,
     "file": "task-3.html",
-    "name": "checks if entered number is even or odd"
+    "name": "Even or Odd",
+    "info": "Checks if entered number is even or odd"
+  },
+  {
+    "task": 4,
+    "file": "task-4.html",
+    "name": "Countdown",
+    "info": "Counts from entered number till 1"
+  },
+  {
+    "task": 5,
+    "file": "task-5.html",
+    "name": "Greeting",
+    "info": "Enter name and display a greeting message"
+  },
+  {
+    "task": 6,
+    "file": "task-6.html",
+    "name": "Student List",
+    "info": "Outputs student names and marks separated by |"
+  },
+  {
+    "task": 7,
+    "file": "task-7.html",
+    "name": "Student Input",
+    "info": "Enter student count, names, and marks, then output separated by |"
+  },
+  {
+    "task": 8,
+    "file": "task-8.html",
+    "name": "Binary Converter",
+    "info": "Converts entered number to binary"
+  },
+  {
+    "task": 9,
+    "file": "task-9.html",
+    "name": "Full Name Greeting",
+    "info": "Enter first and last name and display greeting"
+  },
+  {
+    "task": 10,
+    "file": "task-10.html",
+    "name": "Square Root",
+    "info": "Calculate square root of entered number"
+  },
+  {
+    "task": 11,
+    "file": "task-11.html",
+    "name": "Text Analysis",
+    "info": "Counts words, vowels, and sentences in paragraph"
+  },
+  {
+    "task": 12,
+    "file": "task-12.html",
+    "name": "Calculator UI",
+    "info": "Design a calculator user interface"
+  },
+  {
+    "task": 13,
+    "file": "task-13.html",
+    "name": "Location Info",
+    "info": "Get coordinates and information about location"
+  },
+  {
+    "task": 14,
+    "file": "task-14.html",
+    "name": "Word Search",
+    "info": "Search for a word in a JSON file and display result"
+  },
+  {
+    "task": 15,
+    "file": "task-15.html",
+    "name": "Province Info",
+    "info": "Select a province and display its information"
+  },
+  {
+    "task": 16,
+    "file": "task-16.html",
+    "name": "RGB Colors",
+    "info": "Separate colors from JSON file by RGB values"
+  },
+  {
+    "task": 17,
+    "file": "task-17.html",
+    "name": "Province Data",
+    "info": "Display province information"
+  },
+  {
+    "task": 18,
+    "file": "task-18.html",
+    "name": "Alphabetical Words",
+    "info": "Sort words in alphabetical order"
+  },
+  {
+    "task": 19,
+    "file": "task-19.html",
+    "name": "Plugins Arrays",
+    "info": "Separate plugins into arrays"
+  },
+  {
+    "task": 20,
+    "file": "task-20.html",
+    "name": "Animals A-Z",
+    "info": "Sort animals alphabetically"
+  },
+  {
+    "task": 21,
+    "file": "task-21.html",
+    "name": "Animal Types",
+    "info": "Group animals by type"
+  },
+  {
+    "task": 22,
+    "file": "task-22.html",
+    "name": "Animal Lifespan",
+    "info": "Display animal lifespans in years"
+  },
+  {
+    "task": 23,
+    "file": "task-23.html",
+    "name": "Song Lyrics",
+    "info": "Display a song with timed lyrics"
+  },
+  {
+    "task": 24,
+    "file": "task-24.html",
+    "name": "Download TXT",
+    "info": "Enter file name and content, download as text file"
+  },
+  {
+    "task": 25,
+    "file": "task-25.html",
+    "name": "Send Email",
+    "info": "Enter information and send an email"
+  },
+  {
+    "task": 26,
+    "file": "task-26.html",
+    "name": "Print Info",
+    "info": "Enter information and print it"
+  },
+  {
+    "task": 27,
+    "file": "task-27.html",
+    "name": "Color Codes",
+    "info": "Sort colors alphabetically with their codes"
+  },
+  {
+    "task": 28,
+    "file": "task-28.html",
+    "name": "Color Search",
+    "info": "Search for a color and display its information"
+  },
+  {
+    "task": 29,
+    "file": "task-29.html",
+    "name": "Pass or Fail",
+    "info": "Check if entered mark is pass or fail"
+  },
+  {
+    "task": 30,
+    "file": "task-30.html",
+    "name": "Guess Game",
+    "info": "Simple guess the number game"
+  },
+  {
+    "task": 31,
+    "file": "task-31.html",
+    "name": "Salary Calculator",
+    "info": "Calculate total salary based on joining month"
+  },
+  {
+    "task": 32,
+    "file": "task-32.html",
+    "name": "Subject Stats",
+    "info": "Enter marks and output minimum, pass, and fail subjects"
+  },
+  {
+    "task": 33,
+    "file": "task-33.html",
+    "name": "Top Student",
+    "info": "Find student with highest average marks"
+  },
+  {
+    "task": 34,
+    "file": "task-34.html",
+    "name": "Prism Colors",
+    "info": "Apply syntax highlighting using Prism"
+  },
+  {
+    "task": 35,
+    "file": "task-35.html",
+    "name": "Prism Dynamic",
+    "info": "Highlight entered code dynamically using Prism"
   }
 ]
