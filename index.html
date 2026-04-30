@@ -1,9 +1,49 @@
 <head>
 </head>
+
+<style>
+  body {
+    background-color: rgb(211, 208, 204);
+    border: 35px;
+    ;
+    border-color: black;
+  }
+
+  h1 {
+    color: rgb(21, 43, 35);
+    text-align: center;
+  }
+
+  a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: rgb(124, 124, 167);
+    padding: 20px 20px 20px 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #223b5b;
+    border-radius: 25px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+</style>
+
+<body>
+  <h1><u>tasks</u></h1>
+
+</body>
+
 <script>
   fetch("index.json").then(function (response) {
-      return response.json();
-    })
+    return response.json();
+  })
     .then(function (data) {
 
       for (let i = 0; i < data.length; i++) {
